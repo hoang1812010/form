@@ -1,0 +1,144 @@
+/* Background độc đáo với các khối chuyển động */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1a1a1a;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Tạo các khối */
+.moving-box {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    animation: moveBox 20s infinite;
+}
+
+/* Cập nhật màu sắc dịu nhẹ */
+.moving-box:nth-child(1) {
+    width: 100px;
+    height: 100px;
+    top: 10%;
+    left: 10%;
+    animation-duration: 15s;
+    background-color: rgba(173, 216, 230, 0.5); /* Màu xanh pastel */
+}
+
+.moving-box:nth-child(2) {
+    width: 150px;
+    height: 150px;
+    top: 50%;
+    left: 30%;
+    animation-duration: 25s;
+    background-color: rgba(255, 182, 193, 0.5); /* Màu hồng nhạt */
+}
+
+.moving-box:nth-child(3) {
+    width: 200px;
+    height: 200px;
+    top: 30%;
+    left: 60%;
+    animation-duration: 18s;
+    background-color: rgba(221, 160, 221, 0.5); /* Màu tím nhạt */
+}
+
+.moving-box:nth-child(4) {
+    width: 80px;
+    height: 80px;
+    top: 70%;
+    left: 80%;
+    animation-duration: 30s;
+    background-color: rgba(144, 238, 144, 0.5); /* Màu xanh lá pastel */
+}
+
+/* Keyframe tạo hiệu ứng chuyển động ngẫu nhiên cho các khối */
+@keyframes moveBox {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    50% {
+        transform: translate(100px, 100px) rotate(180deg);
+    }
+    100% {
+        transform: translate(0, 0) rotate(360deg);
+    }
+}
+
+/* CSS cho phần menu vẫn giữ nguyên */
+.menu-container {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 350px;
+    z-index: 10; /* Đảm bảo menu nổi trên các khối */
+}
+
+.menu-title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #ff4d4d;
+}
+
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    background-color: #444;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.menu-item:hover {
+    background-color: #555;
+}
+
+.menu-item input[type="checkbox"] {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.menu-item span {
+    font-size: 18px;
+}
+
+.menu-item button {
+    background-color: #ff4d4d;
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.menu-item button:hover {
+    background-color: #ff3333;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.submit-button:hover {
+    background-color: #45a049;
+}
