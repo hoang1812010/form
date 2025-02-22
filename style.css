@@ -1,7 +1,7 @@
-/* Background độc đáo với các khối chuyển động */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #1a1a1a;
+    background: url('https://images.unsplash.com/photo-1600276722340-07fa991ea218?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+    background-size: cover;
     color: #fff;
     margin: 0;
     padding: 0;
@@ -13,132 +13,43 @@ body {
     position: relative;
 }
 
-/* Tạo các khối */
-.moving-box {
+/* Tạo các mảnh tuyết */
+.snowflake {
     position: absolute;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 15px;
-    animation: moveBox 20s infinite;
+    top: -10px;
+    background-color: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: fall linear infinite;
 }
 
-/* Cập nhật màu sắc dịu nhẹ */
-.moving-box:nth-child(1) {
-    width: 100px;
-    height: 100px;
-    top: 10%;
-    left: 10%;
-    animation-duration: 15s;
-    background-color: rgba(173, 216, 230, 0.5); /* Màu xanh pastel */
+/* Kích thước và vị trí của các mảnh tuyết */
+.snowflake.small {
+    width: 5px;
+    height: 5px;
+    animation-duration: 5s;
 }
 
-.moving-box:nth-child(2) {
-    width: 150px;
-    height: 150px;
-    top: 50%;
-    left: 30%;
-    animation-duration: 25s;
-    background-color: rgba(255, 182, 193, 0.5); /* Màu hồng nhạt */
+.snowflake.medium {
+    width: 8px;
+    height: 8px;
+    animation-duration: 7s;
 }
 
-.moving-box:nth-child(3) {
-    width: 200px;
-    height: 200px;
-    top: 30%;
-    left: 60%;
-    animation-duration: 18s;
-    background-color: rgba(221, 160, 221, 0.5); /* Màu tím nhạt */
+.snowflake.large {
+    width: 12px;
+    height: 12px;
+    animation-duration: 10s;
 }
 
-.moving-box:nth-child(4) {
-    width: 80px;
-    height: 80px;
-    top: 70%;
-    left: 80%;
-    animation-duration: 30s;
-    background-color: rgba(144, 238, 144, 0.5); /* Màu xanh lá pastel */
-}
-
-/* Keyframe tạo hiệu ứng chuyển động ngẫu nhiên cho các khối */
-@keyframes moveBox {
+/* Hiệu ứng rơi của các mảnh tuyết */
+@keyframes fall {
     0% {
-        transform: translate(0, 0) rotate(0deg);
-    }
-    50% {
-        transform: translate(100px, 100px) rotate(180deg);
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
     }
     100% {
-        transform: translate(0, 0) rotate(360deg);
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
     }
-}
-
-/* CSS cho phần menu vẫn giữ nguyên */
-.menu-container {
-    background-color: #333;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    width: 350px;
-    z-index: 10; /* Đảm bảo menu nổi trên các khối */
-}
-
-.menu-title {
-    text-align: center;
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #ff4d4d;
-}
-
-.menu-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-    background-color: #444;
-    padding: 10px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.menu-item:hover {
-    background-color: #555;
-}
-
-.menu-item input[type="checkbox"] {
-    transform: scale(1.2);
-    cursor: pointer;
-}
-
-.menu-item span {
-    font-size: 18px;
-}
-
-.menu-item button {
-    background-color: #ff4d4d;
-    border: none;
-    color: white;
-    padding: 8px 12px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.menu-item button:hover {
-    background-color: #ff3333;
-}
-
-.submit-button {
-    width: 100%;
-    padding: 12px;
-    background-color: #4CAF50;
-    border: none;
-    border-radius: 8px;
-    color: white;
-    font-size: 18px;
-    cursor: pointer;
-    margin-top: 20px;
-}
-
-.submit-button:hover {
-    background-color: #45a049;
 }
