@@ -148,18 +148,6 @@
                 alert("Bạn chưa nhập DPI!");
             }
         }
-
-        function submitConfig() {
-            let healthBuff = document.getElementById('healthBuff').checked;
-            let speedBuff = document.getElementById('speedBuff').checked;
-            let invisibleBuff = document.getElementById('invisibleBuff').checked;
-
-            let config = {
-                healthBuff: healthBuff,
-                speedBuff: speedBuff,
-                invisibleBuff: invisibleBuff,
-            };
-
             console.log("Cấu hình đã chọn:", config);
             alert("Cấu hình đã được áp dụng!");
         }
