@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TienHoang Configuration App</title>
-    <link rel="stylesheet" href="style.css">
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -87,13 +86,30 @@
         .submit-button:hover {
             background-color: #45a049;
         }
+
+        /* Style for moving boxes */
+        .moving-box {
+            width: 50px;
+            height: 50px;
+            background-color: #ff4d4d;
+            position: absolute;
+            animation: moveBox 5s infinite;
+        }
+
+        @keyframes moveBox {
+            0% { top: 0; left: 0; }
+            25% { top: 0; left: 90%; }
+            50% { top: 90%; left: 90%; }
+            75% { top: 90%; left: 0; }
+            100% { top: 0; left: 0; }
+        }
     </style>
 </head>
 <body>
-  <div class="moving-box"></div>
-<div class="moving-box"></div>
-<div class="moving-box"></div>
-<div class="moving-box"></div>
+    <div class="moving-box"></div>
+    <div class="moving-box"></div>
+    <div class="moving-box"></div>
+    <div class="moving-box"></div>
 
     <div class="menu-container">
         <h2 class="menu-title">TienHoang Configuration App</h2>
@@ -105,7 +121,7 @@
         </div>
 
         <div class="menu-item">
-            <span>Optiminze</span>
+            <span>Optimize</span>
             <input type="checkbox" id="speedBuff">
         </div>
 
@@ -115,28 +131,21 @@
         </div>
 
         <div class="menu-item">
-            <span>Buff DPI </span>
-        <button onclick="buffDPI()" style="margin-left: 250px;">...</button>
-
-    <script>
-        function buffDPI() {
-            let dpi = prompt("Nhập DPI:");
-            if (dpi) {
-                alert("DPI được buff là: " + dpi);
-            } else {
-                alert("Bạn chưa nhập DPI!");
-            }
-        }
-    </script><br><br>
-              <br>
-            </div>
+            <span>Buff DPI</span>
+            <button onclick="buffDPI()">...</button>
+        </div>
 
         <button class="submit-button" onclick="submitConfig()">Buff Configuration</button>
     </div>
 
     <script>
-        function addGold() {
-            alert("Đã thêm 1000 vàng!");
+        function buffDPI() {
+            let dpi = prompt("Nhập DPI:");
+            if (dpi) {
+                alert("DPI được buff!!");
+            } else {
+                alert("Bạn chưa nhập DPI!");
+            }
         }
 
         function submitConfig() {
@@ -151,12 +160,8 @@
             };
 
             console.log("Cấu hình đã chọn:", config);
-            alert("Cấu hình đã được áp dụng!!");
+            alert("Cấu hình đã được áp dụng!");
         }
     </script>
-<audio id="beep-sound" src="https://www.soundjay.com/button/flick-beep.wav"></audio>
-
-    
-    <script src="script.js"></script>
 </body>
 </html>
