@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TienHoang Configuration App</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css"> <!-- Liên kết đến tệp CSS ngoài -->
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #1a1a1a;
+            background-image: url('bg.jpg'); /* Đặt hình nền */
+            background-size: cover;
             color: #fff;
             margin: 0;
             padding: 0;
@@ -16,14 +17,58 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Tạo các mảnh tuyết */
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+
+        /* Kích thước và vị trí của các mảnh tuyết */
+        .snowflake.small {
+            width: 5px;
+            height: 5px;
+            animation-duration: 5s;
+        }
+
+        .snowflake.medium {
+            width: 8px;
+            height: 8px;
+            animation-duration: 7s;
+        }
+
+        .snowflake.large {
+            width: 12px;
+            height: 12px;
+            animation-duration: 10s;
+        }
+
+        /* Hiệu ứng rơi của các mảnh tuyết */
+        @keyframes fall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
         }
 
         .menu-container {
-            background-color: #333;
+            background-color: rgba(51, 51, 51, 0.8); /* Đặt nền mờ */
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             width: 350px;
+            z-index: 2; /* Đảm bảo menu nằm trên các mảnh tuyết */
         }
 
         .menu-title {
@@ -87,31 +132,10 @@
         .submit-button:hover {
             background-color: #45a049;
         }
-
-        /* Style for moving boxes */
-        .moving-box {
-            width: 50px;
-            height: 50px;
-            background-color: #ff4d4d;
-            position: absolute;
-            animation: moveBox 5s infinite;
-        }
-
-        @keyframes moveBox {
-            0% { top: 0; left: 0; }
-            25% { top: 0; left: 90%; }
-            50% { top: 90%; left: 90%; }
-            75% { top: 90%; left: 0; }
-            100% { top: 0; left: 0; }
-        }
     </style>
 </head>
 <body>
-    <div class="moving-box"></div>
-    <div class="moving-box"></div>
-    <div class="moving-box"></div>
-    <div class="moving-box"></div>
-
+    <!-- Mảnh tuyết rơi sẽ tự động được thêm vào -->
     <div class="menu-container">
         <h2 class="menu-title">TienHoang Configuration App</h2>
 
@@ -143,14 +167,55 @@
         function buffDPI() {
             let dpi = prompt("Nhập DPI:");
             if (dpi) {
-                alert("DPI được buff là: " + dpi);
+                alert("DPI được buff!!");
             } else {
                 alert("Bạn chưa nhập DPI!");
             }
         }
+
+        function submitConfig() {
+            let healthBuff = document.getElementById('healthBuff').checked;
+            let speedBuff = document.getElementById('speedBuff').checked;
+            let invisibleBuff = document.getElementById('invisibleBuff').checked;
+
+            let config = {
+                healthBuff: healthBuff,
+                speedBuff: speedBuff,
+                invisibleBuff: invisibleBuff,
+            };
+
             console.log("Cấu hình đã chọn:", config);
             alert("Cấu hình đã được áp dụng!");
         }
+
+        // Tạo mảnh tuyết ngẫu nhiên với kích thước và vị trí khác nhau
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+
+            // Ngẫu nhiên chọn kích thước (nhỏ, vừa, lớn)
+            const size = Math.random();
+            if (size < 0.33) {
+                snowflake.classList.add('small');
+            } else if (size < 0.66) {
+                snowflake.classList.add('medium');
+            } else {
+                snowflake.classList.add('large');
+            }
+
+            // Vị trí ngẫu nhiên cho mảnh tuyết
+            snowflake.style.left = Math.random() * window.innerWidth + 'px';
+            
+            document.body.appendChild(snowflake);
+
+            // Xóa mảnh tuyết sau khi rơi xuống
+            setTimeout(() => {
+                snowflake.remove();
+            }, 10000); // Sau 10 giây
+        }
+
+        // Tạo tuyết rơi liên tục
+        setInterval(createSnowflake, 200); // Tạo một mảnh tuyết mỗi 200ms
     </script>
     <script src="script.js"></script>
 </body>
